@@ -1,18 +1,26 @@
 import pyodbc
 
 
+
+
+
+
 def connect_to_mssql(query):
-    server = 'sql-server-container'
+    server = 'mssql'
     port = 1433
-    database = 'property_info'
+    database = 'master'
     username = 'sa'
-    password = '<password>'
+    password = 'Query063@'
 
     connection_string = f"Driver=FreeTDS;SERVER={server};PORT={port};DATABASE={database};UID={username};PWD={password}"
+    
+    connection = pyodbc.connect(connection_string, autocommit=True)
+    return executeConnection(connection,query)
+        
 
+def executeConnection(connection,query):
     try:
-        connection = pyodbc.connect(connection_string, autocommit=True)
-        print("Connected to MSSQL database")
+        print("Connected to SQL database")
 
         cursor = connection.cursor()
         cursor.execute(query)
@@ -24,6 +32,6 @@ def connect_to_mssql(query):
 
         return columns,results
 
-    except pyodbc.Error as err:
-        print(f"Error: {err}")
+    except:
         return None
+

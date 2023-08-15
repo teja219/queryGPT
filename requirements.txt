@@ -1,3 +1,4 @@
-pyodbc==4.0.39
-matplotlib
+pyodbc
+mysql-connector-python
 openai
+matplotlib

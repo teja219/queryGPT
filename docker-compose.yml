@@ -1,0 +1,36 @@
+version: '2.4'
+
+services:
+  mssql:
+    platform: "linux/amd64"
+    image: mcr.microsoft.com/mssql/server
+    command: /bin/bash ./entrypoint.sh
+    environment:
+      SA_PASSWORD: "Query063@"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - mynetwork
+    volumes:
+      - /var/lib/docker/volumes/mssql_db/_data:/var/opt/data
+      - ./db/mssql/docker-entrypoint.sh:/entrypoint.sh
+      - ./db/mssql/db-init.sh:/db-init.sh
+      - ./db/mssql/db-init.sql:/db-init.sql
+
+  custom-server:
+    platform: "linux/amd64"
+    build:
+      context: .  # Path to the directory containing your Dockerfile
+      dockerfile: Dockerfile  # Name of your Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+#volumes:
+#  /var/lib/docker/volumes/mssql_db/_data:

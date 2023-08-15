@@ -1,13 +1,13 @@
 #docker build --platform linux/amd64 -t my-app .
 #docker run my-app
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 # Set environment variables
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip
+    apt-get install -y python3.9 python3-pip
 WORKDIR /app
 # install FreeTDS and dependencies
 RUN apt-get update \
@@ -26,9 +26,8 @@ Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
 #Pip command without proxy setting
 ADD requirements.txt .
 RUN pip3 install -r requirements.txt
-ADD queryService.py .
-ADD queryServer.py .
-ADD logs.txt .
+ADD . .
+#ADD logs.txt .
 CMD ["python3","-u","queryServer.py"]
 EXPOSE 8000/tcp
 EXPOSE 8000/udp

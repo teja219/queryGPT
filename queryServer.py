@@ -3,7 +3,7 @@ import socketserver
 import urllib.parse
 from queryService import connect_to_mssql
 # Define the port you want the server to run on
-port = 8000
+port = 8080
 
 # Create a request handler class by inheriting from http.server.BaseHTTPRequestHandler
 class MyRequestHandler(http.server.BaseHTTPRequestHandler):

@@ -6,12 +6,12 @@ import time
 from tqdm import tqdm
 from charts import drawGraphWrapper
 # Load your API key from an environment variable or secret management service
-openai.api_key = "<insert_token_here>"
+openai.api_key = "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"
 def getChatCompletion(query):
     chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": query}])
     return chat_completion["choices"][0]["message"]["content"]
 def getData(payload):
-    url = "http://127.0.0.1:8000/query"
+    url = "http://127.0.0.1:8080/query"
     headers = {
         'Content-Type': 'text/plain'
     }
