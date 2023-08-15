@@ -1,5 +1,5 @@
 
-[Demo](https://ngkfcs.sharepoint.com/teams/NewmarkTechnology2/_layouts/15/stream.aspx?id=%2Fteams%2FNewmarkTechnology2%2FShared%20Documents%2FGeneral%2FPOC%5Fproperties%2Emp4&referrer=Teams%2ETEAMS%2DELECTRON&referrerScenario=teams%2Dchiclet)
+
 ### Update SQL file and start HTTP server on docker
 
 
